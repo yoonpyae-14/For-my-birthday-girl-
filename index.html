@@ -1,0 +1,1333 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<meta name="theme-color" content="#e8f5ec">
+
+<title>A Little Universe for Chan 🌿</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+
+  --mint: #dcefe2;
+
+  --mint-dark: #47785b;
+
+  --green: #28563c;
+
+  --cream: #fffdf8;
+
+  --pink: #f7e3e5;
+
+  --text: #34463a;
+
+  --muted: #758478;
+
+}
+
+* { box-sizing: border-box; }
+
+body {
+
+  margin: 0;
+
+  min-height: 100vh;
+
+  font-family: 'DM Sans', sans-serif;
+
+  color: var(--text);
+
+  background:
+
+    radial-gradient(circle at 10% 10%, #f8e9e9 0, transparent 30%),
+
+    radial-gradient(circle at 90% 20%, #d9efe1 0, transparent 34%),
+
+    linear-gradient(145deg, #fffdf8, #f2f8f1);
+
+}
+
+button, input { font: inherit; }
+
+button { -webkit-tap-highlight-color: transparent; }
+
+.screen {
+
+  display: none;
+
+  min-height: 100vh;
+
+  min-height: 100svh;
+
+  padding: 28px 19px;
+
+  align-items: center;
+
+  justify-content: center;
+
+  animation: appear .65s ease both;
+
+}
+
+.screen.active { display: flex; }
+
+@keyframes appear {
+
+  from { opacity: 0; transform: translateY(12px); }
+
+  to { opacity: 1; transform: translateY(0); }
+
+}
+
+.card {
+
+  width: min(100%, 490px);
+
+  margin: auto;
+
+  padding: 30px 23px;
+
+  text-align: center;
+
+  background: rgba(255,255,255,.84);
+
+  border: 1px solid rgba(110,151,119,.2);
+
+  border-radius: 28px;
+
+  box-shadow: 0 18px 55px rgba(54,90,62,.09);
+
+  backdrop-filter: blur(12px);
+
+}
+
+.eyebrow {
+
+  color: var(--mint-dark);
+
+  text-transform: uppercase;
+
+  letter-spacing: 3px;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+}
+
+h1, h2, .serif {
+
+  font-family: 'Playfair Display', Georgia, serif;
+
+  font-weight: 600;
+
+}
+
+h1 {
+
+  font-size: clamp(34px, 8vw, 48px);
+
+  line-height: 1.12;
+
+  margin: 15px 0;
+
+  color: var(--green);
+
+}
+
+h2 {
+
+  font-size: clamp(27px, 7vw, 35px);
+
+  margin: 12px 0;
+
+  color: var(--green);
+
+}
+
+p {
+
+  font-size: 14px;
+
+  line-height: 1.8;
+
+}
+
+.small { font-size: 12px; color: var(--muted); }
+
+.emoji { font-size: 49px; margin: 10px 0; }
+
+.divider { width: 45px; height: 2px; background: #b8d7c0; margin: 20px auto; }
+
+input {
+
+  width: 100%;
+
+  padding: 15px;
+
+  border: 1px solid #c9dfce;
+
+  border-radius: 14px;
+
+  background: #fbfefb;
+
+  outline: none;
+
+  color: var(--text);
+
+  margin: 12px 0;
+
+  font-size: 16px;
+
+}
+
+input:focus { border-color: #719b7d; box-shadow: 0 0 0 3px #dcefe2; }
+
+.btn {
+
+  display: inline-flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  width: 100%;
+
+  padding: 14px 18px;
+
+  margin-top: 10px;
+
+  border: none;
+
+  border-radius: 14px;
+
+  background: var(--green);
+
+  color: white;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  text-decoration: none;
+
+  transition: transform .2s, background .2s;
+
+}
+
+.btn:active { transform: scale(.97); }
+
+.btn:hover { background: #396a4b; }
+
+.btn.secondary {
+
+  background: #e8f3e9;
+
+  color: #315d3e;
+
+  border: 1px solid #d0e5d3;
+
+}
+
+.btn.light {
+
+  background: #fff4f4;
+
+  color: #875b62;
+
+  border: 1px solid #f0dddd;
+
+}
+
+.message {
+
+  min-height: 22px;
+
+  color: #a35e69;
+
+  font-size: 12px;
+
+  margin: 8px 0 0;
+
+}
+
+.progress {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 6px;
+
+  margin: 0 0 22px;
+
+}
+
+.progress span {
+
+  width: 7px;
+
+  height: 7px;
+
+  background: #dce8dc;
+
+  border-radius: 50%;
+
+}
+
+.progress span.on { background: #568263; }
+
+.game-note {
+
+  background: #f0f7f0;
+
+  padding: 12px;
+
+  border-radius: 13px;
+
+  font-size: 12px;
+
+  margin: 16px 0;
+
+}
+
+.answers { display: grid; gap: 9px; margin-top: 20px; }
+
+.answer {
+
+  width: 100%;
+
+  padding: 13px;
+
+  border-radius: 13px;
+
+  background: #f5f8f3;
+
+  border: 1px solid #dce9dc;
+
+  color: var(--text);
+
+  cursor: pointer;
+
+}
+
+.answer:disabled { opacity: .8; }
+
+.memory-grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 8px;
+
+  margin: 20px 0;
+
+}
+
+.memory-card {
+
+  aspect-ratio: 1;
+
+  border: 1px solid #d6e7d8;
+
+  border-radius: 13px;
+
+  background: #e8f3e9;
+
+  font-size: 25px;
+
+  cursor: pointer;
+
+  color: var(--green);
+
+}
+
+.memory-card.matched {
+
+  background: #fff1f0;
+
+  border-color: #f0d7d9;
+
+  cursor: default;
+
+}
+
+.puzzle-words {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  margin: 22px 0;
+
+}
+
+.word {
+
+  border: 1px solid #cfe2d2;
+
+  border-radius: 12px;
+
+  padding: 11px 13px;
+
+  background: #eef6ef;
+
+  color: var(--green);
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+}
+
+.word:disabled { opacity: .4; }
+
+.puzzle-answer {
+
+  min-height: 52px;
+
+  border: 1px dashed #b8d3bd;
+
+  background: #fbfefb;
+
+  border-radius: 13px;
+
+  padding: 13px;
+
+  line-height: 1.8;
+
+}
+
+.heart-button {
+
+  width: 125px;
+
+  height: 125px;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background: #fbe9eb;
+
+  font-size: 55px;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 25px #efdadd;
+
+  animation: heartbeat 1.2s infinite;
+
+}
+
+@keyframes heartbeat {
+
+  0%,100% { transform: scale(1); }
+
+  50% { transform: scale(1.07); }
+
+}
+
+.letter {
+
+  background: #fffdf8;
+
+  border: 1px solid #eee6d9;
+
+  border-radius: 17px;
+
+  padding: 21px 18px;
+
+  text-align: left;
+
+  margin: 20px 0;
+
+  line-height: 1.95;
+
+  font-size: 14px;
+
+}
+
+.letter p { margin: 0 0 15px; }
+
+.letter p:last-child { margin-bottom: 0; }
+
+.gift {
+
+  font-size: 90px;
+
+  display: block;
+
+  cursor: pointer;
+
+  animation: float 2s ease-in-out infinite;
+
+}
+
+@keyframes float {
+
+  0%,100% { transform: translateY(0) rotate(-3deg); }
+
+  50% { transform: translateY(-9px) rotate(3deg); }
+
+}
+
+.hidden { display: none !important; }
+
+.final-message {
+
+  padding: 18px;
+
+  border-radius: 16px;
+
+  background: linear-gradient(135deg, #edf7ed, #fff4f4);
+
+  margin: 18px 0;
+
+}
+
+.sparkle { color: #83a88a; }
+
+footer { font-size: 10px; color: #98a69a; margin-top: 22px; }
+
+@media (max-width: 360px) {
+
+  .card { padding: 25px 16px; }
+
+  .memory-grid { gap: 6px; }
+
+  .memory-card { font-size: 22px; }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *, *::before, *::after {
+
+    animation-duration: .01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    scroll-behavior: auto !important;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- 1. NAME GATE -->
+
+<section class="screen active" id="step-name">
+
+  <div class="card">
+
+    <div class="eyebrow">A little universe, made for one person</div>
+
+    <div class="emoji">🌿✨</div>
+
+    <h1>A little place<br>for you.</h1>
+
+    <p>You found a tiny universe. But first, I need to know who's visiting.</p>
+
+    <div class="divider"></div>
+
+    <label class="small" for="visitorName">Type your full name to enter</label>
+
+    <input id="visitorName" type="text" placeholder="Your full name" autocomplete="name">
+
+    <button class="btn" id="enterBtn">Enter my little universe →</button>
+
+    <div class="message" id="nameMessage" aria-live="polite"></div>
+
+    <footer>made with a little extra love ♡</footer>
+
+  </div>
+
+</section>
+
+<!-- 2. BIRTHDAY PERSON CHECK -->
+
+<section class="screen" id="step-check">
+
+  <div class="card">
+
+    <div class="eyebrow">Just one tiny question</div>
+
+    <div class="emoji">🎂</div>
+
+    <h2>Wait a second…</h2>
+
+    <p>Are you the birthday girl we're celebrating today?</p>
+
+    <button class="btn" id="yesBirthday">Of course I am! ♡</button>
+
+    <button class="btn secondary" id="noBirthday">I'm just visiting 🌷</button>
+
+    <p class="message" id="checkMessage" aria-live="polite"></p>
+
+  </div>
+
+</section>
+
+<!-- 3. QUIZ -->
+
+<section class="screen" id="step-quiz">
+
+  <div class="card">
+
+    <div class="progress">
+
+      <span class="on"></span><span></span><span></span><span></span>
+
+    </div>
+
+    <div class="eyebrow">Game 01 · A little warm-up</div>
+
+    <div class="emoji">🌼</div>
+
+    <h2>Birthday Quiz</h2>
+
+    <p id="quizCounter" class="small">Question 1 of 3</p>
+
+    <p id="quizQuestion"></p>
+
+    <div class="answers" id="quizAnswers"></div>
+
+    <p class="message" id="quizMessage" aria-live="polite"></p>
+
+  </div>
+
+</section>
+
+<!-- 4. MEMORY MATCH -->
+
+<section class="screen" id="step-memory">
+
+  <div class="card">
+
+    <div class="progress">
+
+      <span class="on"></span><span class="on"></span><span></span><span></span>
+
+    </div>
+
+    <div class="eyebrow">Game 02 · Little things</div>
+
+    <div class="emoji">🧸</div>
+
+    <h2>Memory Garden</h2>
+
+    <p>Find all four matching pairs. Take your time, birthday girl.</p>
+
+    <div class="memory-grid" id="memoryGrid"></div>
+
+    <p class="message" id="memoryMessage" aria-live="polite"></p>
+
+  </div>
+
+</section>
+
+<!-- 5. WORD PUZZLE -->
+
+<section class="screen" id="step-puzzle">
+
+  <div class="card">
+
+    <div class="progress">
+
+      <span class="on"></span><span class="on"></span><span class="on"></span><span></span>
+
+    </div>
+
+    <div class="eyebrow">Game 03 · Put the words together</div>
+
+    <div class="emoji">🧩</div>
+
+    <h2>A tiny reminder</h2>
+
+    <p>Tap the words in the right order to make a little message for you.</p>
+
+    <div class="puzzle-answer" id="puzzleAnswer">Your words will appear here…</div>
+
+    <div class="puzzle-words" id="puzzleWords"></div>
+
+    <button class="btn secondary" id="resetPuzzle">Try again ↺</button>
+
+    <p class="message" id="puzzleMessage" aria-live="polite"></p>
+
+  </div>
+
+</section>
+
+<!-- 6. CATCH THE HEARTS -->
+
+<section class="screen" id="step-hearts">
+
+  <div class="card">
+
+    <div class="progress">
+
+      <span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span>
+
+    </div>
+
+    <div class="eyebrow">Game 04 · One last little game</div>
+
+    <h2>Catch some love</h2>
+
+    <p>Tap the heart five times. Each one comes with a tiny bit of birthday love.</p>
+
+    <div style="margin:28px 0">
+
+      <button class="heart-button" id="heartBtn" aria-label="Catch a heart">♡</button>
+
+    </div>
+
+    <p><strong id="heartCount">0 / 5 hearts</strong></p>
+
+    <p class="message" id="heartMessage" aria-live="polite"></p>
+
+  </div>
+
+</section>
+
+<!-- 7. BIRTHDAY LETTER -->
+
+<section class="screen" id="step-letter">
+
+  <div class="card">
+
+    <div class="eyebrow">A little letter, just for you</div>
+
+    <div class="emoji">💌</div>
+
+    <h2>Happy 19th Birthday, Chan.</h2>
+
+    <div class="letter">
+
+      <p>First of all, happy birthday, Channn. ♡ I hope 19 treats you really, really well.</p>
+
+      <p>Thank you for being there for me, for listening to me, and for cheering me up in your own way. You probably don't even realise how much those little things mean to me, but they really do.</p>
+
+      <p>I hope this year brings you lots of reasons to smile, good people to laugh with, and the courage to go after the things you really want. I hope life is gentle with you, even on the days when things don't go as planned.</p>
+
+      <p>And please remember that you deserve to be loved, appreciated, and cared for — not just on your birthday, but on ordinary days too. I hope you always have people around who make you feel that way.</p>
+
+      <p>Whatever happens, I'm always cheering for you, okay? I'll always be on your side. You can count on me.</p>
+
+      <p>And if you ever forget how special you are, I hope this little letter reminds you.</p>
+
+      <p>Love you, bestie. Take care of that lovely heart of yours, and don't forget to smile. 🌷</p>
+
+      <p style="text-align:right; margin-top:20px;">— someone who's really glad to have you in their life ♡</p>
+
+    </div>
+
+    <button class="btn" id="toGift">There's one more thing… →</button>
+
+  </div>
+
+</section>
+
+<!-- 8. GIFT BOX -->
+
+<section class="screen" id="step-gift">
+
+  <div class="card">
+
+    <div class="eyebrow">One last surprise</div>
+
+    <h2>A little gift for you</h2>
+
+    <p>You've made it all the way here, Chan. This one's yours.</p>
+
+    <div style="margin:25px 0">
+
+      <button class="gift" id="openGift" aria-label="Open birthday gift">🎁</button>
+
+    </div>
+
+    <p class="small">Tap the gift to open it ♡</p>
+
+    <div id="giftReveal" class="hidden">
+
+      <div class="divider"></div>
+
+      <div class="emoji">🌷🎂✨</div>
+
+      <h2>Here's to your 19th.</h2>
+
+      <div class="final-message">
+
+        <p>I hope this year gives you as much happiness as you quietly bring to the people around you.</p>
+
+        <p>Keep being you, Chan. The world is a little nicer with you in it. 💚</p>
+
+        <p><strong>Happy Birthday, my favourite birthday girl. Love you lots! ♡</strong></p>
+
+      </div>
+
+      <p>And here's a song for your little universe…</p>
+
+      <a class="btn" href="https://www.youtube.com/results?search_query=Elliot+James+Reay+I+Think+They+Call+This+Love" target="_blank" rel="noopener noreferrer">
+
+        ▶ Listen: I Think They Call This Love
+
+      </a>
+
+      <p class="small">Elliot James Reay · Opens YouTube</p>
+
+      <div class="divider"></div>
+
+      <p class="serif" style="font-size:22px;">Stay happy, Chan. Always. ♡</p>
+
+      <p class="small">Your little universe will always have a place for you.</p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+
+const screens = [
+
+  "step-name",
+
+  "step-check",
+
+  "step-quiz",
+
+  "step-memory",
+
+  "step-puzzle",
+
+  "step-hearts",
+
+  "step-letter",
+
+  "step-gift"
+
+];
+
+let currentStep = 0;
+
+let busy = false;
+
+function showStep(index) {
+
+  if (index < 0 || index >= screens.length) return;
+
+  currentStep = index;
+
+  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+
+  const target = document.getElementById(screens[index]);
+
+  target.classList.remove("active");
+
+  void target.offsetWidth;
+
+  target.classList.add("active");
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
+}
+
+function advanceAfter(messageElement, message, nextIndex, delay = 900) {
+
+  if (busy) return;
+
+  busy = true;
+
+  if (messageElement) messageElement.textContent = message;
+
+  setTimeout(() => {
+
+    busy = false;
+
+    showStep(nextIndex);
+
+  }, delay);
+
+}
+
+/* NAME GATE */
+
+const nameInput = document.getElementById("visitorName");
+
+const nameMessage = document.getElementById("nameMessage");
+
+function checkName() {
+
+  const typed = nameInput.value.trim().replace(/\s+/g, " ").toLowerCase();
+
+  if (typed === "aye chan myat mon oo") {
+
+    nameMessage.textContent = "";
+
+    showStep(1);
+
+  } else {
+
+    nameMessage.textContent = "Hmm… this little universe is made for Chan. Try her full name ♡";
+
+    nameInput.focus();
+
+  }
+
+}
+
+document.getElementById("enterBtn").addEventListener("click", checkName);
+
+nameInput.addEventListener("keydown", e => {
+
+  if (e.key === "Enter") checkName();
+
+});
+
+/* BIRTHDAY PERSON CHECK */
+
+document.getElementById("yesBirthday").addEventListener("click", () => {
+
+  document.getElementById("checkMessage").textContent = "";
+
+  showStep(2);
+
+});
+
+document.getElementById("noBirthday").addEventListener("click", () => {
+
+  document.getElementById("checkMessage").textContent =
+
+    "Aww, this surprise is especially for Chan. Let her have this little moment first. 🌷";
+
+});
+
+/* GAME 1: QUIZ */
+
+const quizData = [
+
+  {
+
+    q: "What are we celebrating today?",
+
+    options: ["A random Tuesday", "Chan's 19th birthday", "A school holiday"],
+
+    correct: 1
+
+  },
+
+  {
+
+    q: "What's the most important thing you deserve?",
+
+    options: ["More stress", "To never rest", "Love, care, and happiness"],
+
+    correct: 2
+
+  },
+
+  {
+
+    q: "What's your birthday mission?",
+
+    options: ["Smile a little more", "Forget to eat cake", "Be mean to yourself"],
+
+    correct: 0
+
+  }
+
+];
+
+let quizIndex = 0;
+
+function renderQuiz() {
+
+  const data = quizData[quizIndex];
+
+  document.getElementById("quizCounter").textContent =
+
+    `Question ${quizIndex + 1} of ${quizData.length}`;
+
+  document.getElementById("quizQuestion").textContent = data.q;
+
+  document.getElementById("quizMessage").textContent = "";
+
+  const container = document.getElementById("quizAnswers");
+
+  container.innerHTML = "";
+
+  data.options.forEach((option, index) => {
+
+    const btn = document.createElement("button");
+
+    btn.className = "answer";
+
+    btn.textContent = option;
+
+    btn.addEventListener("click", () => {
+
+      if (busy) return;
+
+      if (index === data.correct) {
+
+        busy = true;
+
+        btn.style.background = "#dcefe2";
+
+        btn.style.borderColor = "#9dc4a5";
+
+        document.getElementById("quizMessage").textContent = "That's right! ♡";
+
+        setTimeout(() => {
+
+          busy = false;
+
+          quizIndex++;
+
+          if (quizIndex >= quizData.length) {
+
+            showStep(3);
+
+          } else {
+
+            renderQuiz();
+
+          }
+
+        }, 750);
+
+      } else {
+
+        document.getElementById("quizMessage").textContent =
+
+          "Not that one, birthday girl. Try again 🌷";
+
+      }
+
+    });
+
+    container.appendChild(btn);
+
+  });
+
+}
+
+renderQuiz();
+
+/* GAME 2: MEMORY MATCH */
+
+const memorySymbols = ["🌷", "🧸", "🌙", "💚", "🌷", "🧸", "🌙", "💚"];
+
+let memoryDeck = [];
+
+let firstCard = null;
+
+let lockMemory = false;
+
+let matchedPairs = 0;
+
+function shuffle(array) {
+
+  const result = [...array];
+
+  for (let i = result.length - 1; i > 0; i--) {
+
+    const j = Math.floor(Math.random() * (i + 1));
+
+    [result[i], result[j]] = [result[j], result[i]];
+
+  }
+
+  return result;
+
+}
+
+function buildMemory() {
+
+  memoryDeck = shuffle(memorySymbols).map((symbol, index) => ({
+
+    symbol, index, matched: false
+
+  }));
+
+  firstCard = null;
+
+  lockMemory = false;
+
+  matchedPairs = 0;
+
+  document.getElementById("memoryMessage").textContent = "";
+
+  const grid = document.getElementById("memoryGrid");
+
+  grid.innerHTML = "";
+
+  memoryDeck.forEach((card, index) => {
+
+    const btn = document.createElement("button");
+
+    btn.className = "memory-card";
+
+    btn.textContent = "?";
+
+    btn.setAttribute("aria-label", "Hidden memory card");
+
+    btn.addEventListener("click", () => {
+
+      if (lockMemory || card.matched || btn.textContent !== "?") return;
+
+      btn.textContent = card.symbol;
+
+      if (!firstCard) {
+
+        firstCard = { card, btn };
+
+        return;
+
+      }
+
+      if (firstCard.card.symbol === card.symbol) {
+
+        firstCard.card.matched = true;
+
+        card.matched = true;
+
+        firstCard.btn.classList.add("matched");
+
+        btn.classList.add("matched");
+
+        firstCard = null;
+
+        matchedPairs++;
+
+        if (matchedPairs === 4) {
+
+          lockMemory = true;
+
+          advanceAfter(
+
+            document.getElementById("memoryMessage"),
+
+            "You found every pair! Little things can be special. 💚",
+
+            4,
+
+            1100
+
+          );
+
+        }
+
+      } else {
+
+        lockMemory = true;
+
+        const previous = firstCard;
+
+        firstCard = null;
+
+        setTimeout(() => {
+
+          previous.btn.textContent = "?";
+
+          btn.textContent = "?";
+
+          lockMemory = false;
+
+        }, 700);
+
+      }
+
+    });
+
+    grid.appendChild(btn);
+
+  });
+
+}
+
+buildMemory();
+
+/* GAME 3: WORD PUZZLE */
+
+const correctWords = ["YOU", "ARE", "SO", "LOVED"];
+
+let chosenWords = [];
+
+function renderPuzzle() {
+
+  const wordBox = document.getElementById("puzzleWords");
+
+  wordBox.innerHTML = "";
+
+  chosenWords = [];
+
+  document.getElementById("puzzleAnswer").textContent = "Your words will appear here…";
+
+  document.getElementById("puzzleMessage").textContent = "";
+
+  const shuffledWords = shuffle(correctWords);
+
+  shuffledWords.forEach(word => {
+
+    const btn = document.createElement("button");
+
+    btn.className = "word";
+
+    btn.textContent = word;
+
+    btn.addEventListener("click", () => {
+
+      if (busy || btn.disabled) return;
+
+      const expected = correctWords[chosenWords.length];
+
+      if (word !== expected) {
+
+        document.getElementById("puzzleMessage").textContent =
+
+          "Almost! Try putting the words in a different order. ♡";
+
+        return;
+
+      }
+
+      chosenWords.push(word);
+
+      btn.disabled = true;
+
+      document.getElementById("puzzleAnswer").textContent = chosenWords.join(" ");
+
+      if (chosenWords.length === correctWords.length) {
+
+        busy = true;
+
+        document.getElementById("puzzleMessage").textContent =
+
+          "YOU ARE SO LOVED. And that's the truth. 💚";
+
+        setTimeout(() => {
+
+          busy = false;
+
+          showStep(5);
+
+        }, 1200);
+
+      }
+
+    });
+
+    wordBox.appendChild(btn);
+
+  });
+
+}
+
+document.getElementById("resetPuzzle").addEventListener("click", () => {
+
+  if (!busy) renderPuzzle();
+
+});
+
+renderPuzzle();
+
+/* GAME 4: CATCH THE HEARTS */
+
+let heartsCaught = 0;
+
+const heartMessages = [
+
+  "One little heart for you ♡",
+
+  "Two! You deserve good things 💚",
+
+  "Three! Keep that smile 🌷",
+
+  "Four! Almost there ✨",
+
+  "Five! A whole handful of love!"
+
+];
+
+document.getElementById("heartBtn").addEventListener("click", () => {
+
+  if (busy || heartsCaught >= 5) return;
+
+  heartsCaught++;
+
+  document.getElementById("heartCount").textContent = `${heartsCaught} / 5 hearts`;
+
+  document.getElementById("heartBtn").textContent = heartsCaught === 5 ? "💚" : "💗";
+
+  document.getElementById("heartMessage").textContent = heartMessages[heartsCaught - 1];
+
+  if (heartsCaught === 5) {
+
+    busy = true;
+
+    setTimeout(() => {
+
+      busy = false;
+
+      showStep(6);
+
+    }, 1300);
+
+  }
+
+});
+
+/* LETTER → GIFT */
+
+document.getElementById("toGift").addEventListener("click", () => showStep(7));
+
+/* OPEN GIFT */
+
+document.getElementById("openGift").addEventListener("click", () => {
+
+  document.getElementById("giftReveal").classList.remove("hidden");
+
+  document.getElementById("openGift").textContent = "🎁💖";
+
+  document.getElementById("openGift").disabled = true;
+
+  document.getElementById("giftReveal").scrollIntoView({
+
+    behavior: "smooth",
+
+    block: "nearest"
+
+  });
+
+});
+
+</script>
+
+</body>
+
+</html>
